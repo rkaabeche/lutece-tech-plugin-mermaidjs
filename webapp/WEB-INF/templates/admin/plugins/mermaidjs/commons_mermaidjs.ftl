@@ -119,11 +119,12 @@ document.addEventListener('DOMContentLoaded', function() {
 <@deprecatedWarning args=deprecated />
 <#local helpMsg><ul><li>#i18n{mermaidjs.help.info}</li><#if zoom><li>#i18n{mermaidjs.help.zoom}</li></#if><#if download><li>#i18n{mermaidjs.help.download}</li></#if></ul></#local>
 <@btnToolbar class='mb-3' vertical=true>
-<#if toolbarBtn !=''>${toolbarBtn}</#if>
+<#if toolbarBtn?has_content>${toolbarBtn}</#if>
   <@button color='secondary' id='zoom-in' title='#i18n{mermaidjs.zoomIn}' buttonIcon='zoom-out' hideTitle=['all'] />
   <@button color='secondary' id='zoom-out' title='#i18n{mermaidjs.zoomOut}'  buttonIcon='zoom-in' hideTitle=['all'] />
   <@button color='secondary' id='reset' title='#i18n{mermaidjs.reset}' buttonIcon='zoom-cancel' hideTitle=['all'] />
-  <@button color='secondary' title='#i18n{mermaidjs.help.title}' buttonIcon='help-circle' hideTitle=['all']  params='data-bs-container="body" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="bottom" data-bs-content="${helpMsg}"' />
+  <#local paramsAttr1>data-bs-container="body" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="bottom" data-bs-content="${helpMsg}"</#local>
+  <@button color='secondary' title='#i18n{mermaidjs.help.title}' buttonIcon='help-circle' hideTitle=['all']  params=paramsAttr1 />
 </@btnToolbar>
 </#macro> 
 <#macro mermaidHelp zoom=true download=true deprecated...>
